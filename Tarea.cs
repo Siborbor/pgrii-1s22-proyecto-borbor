@@ -8,24 +8,34 @@ namespace CrearTarea
 {
     internal class Tarea
     {
-        private int id;
+        private String id ;
         private string nombre;
         private string description;
         private string fecha_creacion;
         private string fecha_limite_tarea;
         private string estado;
-
+      
         public Tarea()
         {
-            id = 0;
+            id = Guid.NewGuid().ToString(); 
             nombre = "";
             description = "";
             fecha_creacion = "";
             fecha_limite_tarea = "";
-            estado = "";
+            estado = "Creada";
         }
 
-        public int ID
+        public Tarea(String nombre, string descripcion, string fechaCreacion, string fechaLimite )
+        {
+            id = Guid.NewGuid().ToString();
+            nombre = nombre;
+            description = descripcion;
+            fecha_creacion = fechaCreacion;
+            fecha_limite_tarea = fechaLimite ;
+            estado = "Creada";
+        }
+
+        public string ID
         {
             get { return id; }
             set { id = value; }
