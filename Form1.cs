@@ -31,23 +31,70 @@ namespace TareaGestor
             dgTareas.DataSource = lista;
         }
 
+        public void LimpiarDatos()
+        {
+            //encerando
+            txtId.Text = "";
+            txtBox_Nombre.Text = "";
+            txtBox_Descripcion.Text = "";
+            dtCreacion.Text = "";
+            dtLimite.Text = "";
+            txtEstado.Text = "";
+            dtBuscarFecha.Text = "";
+            txtBuscarEstado.Text = "";
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            Tarea t = new Tarea(txtBox_Nombre.Text,txtBox_Descripcion.Text, dtCreacion.Text, dtLimite.Text, txtEstado.Text);
-            collection.InsertOne(t);
-            MostrarDocumento();
+            if ((txtEstado.Text.ToUpper() == "CREADA") || (txtEstado.Text.ToUpper() == "EN EJECUCION") || (txtEstado.Text.ToUpper() == "COMPLETADA"))
+            {
+                Tarea t = new Tarea(txtBox_Nombre.Text, txtBox_Descripcion.Text, dtCreacion.Text, dtLimite.Text, txtEstado.Text.ToUpper());
+                collection.InsertOne(t);
+                MostrarDocumento();
+                LimpiarDatos();
+
+                string message = "Tarea Agregada con exito";
+                string title = "aviso";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, title, buttons, MessageBoxIcon.Exclamation);
+
+            }
+            else
+            {
+                string message = "Estado incorrecto(creada/en ejecucion/completada)";
+                string title = "aviso";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, title, buttons, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var updateCampos = Builders<Tarea>.Update
+            if (txtEstado.Text.ToUpper() == "CREADA" )
+            {
+                var updateCampos = Builders<Tarea>.Update
                 .Set("name", txtBox_Nombre.Text)
                 .Set("descripcion", txtBox_Descripcion.Text)
                 .Set("fechaCreacion", dtCreacion.Text)
                 .Set("fechaLimite", dtLimite.Text)
                 .Set("estado", txtEstado.Text);
-            collection.UpdateOne(s => s.ID == txtId.Text,updateCampos);
-            MostrarDocumento();
+                collection.UpdateOne(s => s.ID == txtId.Text, updateCampos);
+                MostrarDocumento();
+                LimpiarDatos();
+
+                string message = "Tarea editada con exito";
+                string title = "aviso";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, title, buttons, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                string message = "Seleccione una tarea con estado Creada para editar";
+                string title = "aviso";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+            }
+            
         }
 
         private void dgTareas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -65,31 +112,32 @@ namespace TareaGestor
 
             collection.DeleteOne(s => s.ID == txtId.Text);
             MostrarDocumento();
+            LimpiarDatos();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             
-                var filterFecha = Builders<Tarea>.Filter.Eq(s => s.FechaCreacion, dtBuscarFecha.Text);
-                var tareaFecha = collection.Find(filterFecha).ToList();
-                dgTareas.DataSource = tareaFecha;
-          
-            
-            
-            
+            var filterFecha = Builders<Tarea>.Filter.Eq(s => s.FechaCreacion, dtBuscarFecha.Text);
+            var tareaFecha = collection.Find(filterFecha).ToList();
+            dgTareas.DataSource = tareaFecha;
+            LimpiarDatos();
+
 
         }
 
         private void btBuscarEstado_Click(object sender, EventArgs e)
         {
-            var filterEstado = Builders<Tarea>.Filter.Eq(s => s.Estado, txtBuscarEstado.Text);
+            var filterEstado = Builders<Tarea>.Filter.Eq(s => s.Estado, txtBuscarEstado.Text.ToUpper());
             var tareaEstado = collection.Find(filterEstado).ToList();
             dgTareas.DataSource = tareaEstado;
+            LimpiarDatos();
         }
 
         private void btTerminarBusqueda_Click(object sender, EventArgs e)
         {
             MostrarDocumento();
+            LimpiarDatos();
         }
     }
 }

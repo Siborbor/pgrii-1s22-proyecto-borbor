@@ -163,6 +163,7 @@
             // 
             // dtLimite
             // 
+            this.dtLimite.CustomFormat = "ddMMyyyy";
             this.dtLimite.Location = new System.Drawing.Point(85, 429);
             this.dtLimite.Name = "dtLimite";
             this.dtLimite.Size = new System.Drawing.Size(361, 22);
@@ -170,7 +171,7 @@
             // 
             // dtCreacion
             // 
-            this.dtCreacion.CustomFormat = ";l;ll;l;l";
+            this.dtCreacion.CustomFormat = "dd-MM-yyyy";
             this.dtCreacion.Location = new System.Drawing.Point(87, 358);
             this.dtCreacion.Name = "dtCreacion";
             this.dtCreacion.Size = new System.Drawing.Size(361, 22);
@@ -196,10 +197,14 @@
             // 
             // dtBuscarFecha
             // 
+            this.dtBuscarFecha.CustomFormat = "dd-MM-yyyy";
+            this.dtBuscarFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtBuscarFecha.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dtBuscarFecha.Location = new System.Drawing.Point(561, 97);
             this.dtBuscarFecha.Name = "dtBuscarFecha";
             this.dtBuscarFecha.Size = new System.Drawing.Size(281, 22);
             this.dtBuscarFecha.TabIndex = 7;
+            this.dtBuscarFecha.Value = new System.DateTime(2022, 8, 13, 3, 15, 13, 0);
             // 
             // label6
             // 
