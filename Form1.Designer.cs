@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btCrear = new System.Windows.Forms.Button();
+            this.btEditar = new System.Windows.Forms.Button();
+            this.btBorrar = new System.Windows.Forms.Button();
+            this.btBuscarFecha = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,14 +43,16 @@
             this.dtCreacion = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEstado = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtBuscarFecha = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscarEstado = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dgTareas = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.btBuscarEstado = new System.Windows.Forms.Button();
+            this.btTerminarBusqueda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgTareas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,48 +61,51 @@
             this.lblTitulo.AutoEllipsis = true;
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Poppins Black", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(72, 20);
+            this.lblTitulo.Location = new System.Drawing.Point(72, 9);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(409, 74);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "GESTOR DE TAREA";
             // 
-            // button1
+            // btCrear
             // 
-            this.button1.Location = new System.Drawing.Point(41, 565);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Crear";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btCrear.Location = new System.Drawing.Point(41, 565);
+            this.btCrear.Name = "btCrear";
+            this.btCrear.Size = new System.Drawing.Size(123, 34);
+            this.btCrear.TabIndex = 1;
+            this.btCrear.Text = "Crear";
+            this.btCrear.UseVisualStyleBackColor = true;
+            this.btCrear.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btEditar
             // 
-            this.button2.Location = new System.Drawing.Point(210, 565);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(123, 34);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Editar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btEditar.Location = new System.Drawing.Point(210, 565);
+            this.btEditar.Name = "btEditar";
+            this.btEditar.Size = new System.Drawing.Size(123, 34);
+            this.btEditar.TabIndex = 1;
+            this.btEditar.Text = "Editar";
+            this.btEditar.UseVisualStyleBackColor = true;
+            this.btEditar.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btBorrar
             // 
-            this.button3.Location = new System.Drawing.Point(376, 565);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 34);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Borrar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btBorrar.Location = new System.Drawing.Point(376, 565);
+            this.btBorrar.Name = "btBorrar";
+            this.btBorrar.Size = new System.Drawing.Size(123, 34);
+            this.btBorrar.TabIndex = 1;
+            this.btBorrar.Text = "Borrar";
+            this.btBorrar.UseVisualStyleBackColor = true;
+            this.btBorrar.Click += new System.EventHandler(this.btBorrar_Click);
             // 
-            // button4
+            // btBuscarFecha
             // 
-            this.button4.Location = new System.Drawing.Point(704, 179);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(354, 34);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Buscar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btBuscarFecha.Location = new System.Drawing.Point(561, 137);
+            this.btBuscarFecha.Name = "btBuscarFecha";
+            this.btBuscarFecha.Size = new System.Drawing.Size(281, 34);
+            this.btBuscarFecha.TabIndex = 1;
+            this.btBuscarFecha.Text = "Buscar Por Fecha";
+            this.btBuscarFecha.UseVisualStyleBackColor = true;
+            this.btBuscarFecha.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
@@ -189,35 +194,35 @@
             this.txtEstado.Size = new System.Drawing.Size(362, 22);
             this.txtEstado.TabIndex = 4;
             // 
-            // dateTimePicker1
+            // dtBuscarFecha
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(561, 143);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(281, 22);
-            this.dateTimePicker1.TabIndex = 7;
+            this.dtBuscarFecha.Location = new System.Drawing.Point(561, 97);
+            this.dtBuscarFecha.Name = "dtBuscarFecha";
+            this.dtBuscarFecha.Size = new System.Drawing.Size(281, 22);
+            this.dtBuscarFecha.TabIndex = 7;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins Medium", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(624, 110);
+            this.label6.Location = new System.Drawing.Point(624, 64);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(144, 30);
             this.label6.TabIndex = 6;
             this.label6.Text = "Fecha creación";
             // 
-            // textBox1
+            // txtBuscarEstado
             // 
-            this.textBox1.Location = new System.Drawing.Point(873, 143);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(298, 22);
-            this.textBox1.TabIndex = 9;
+            this.txtBuscarEstado.Location = new System.Drawing.Point(873, 97);
+            this.txtBuscarEstado.Name = "txtBuscarEstado";
+            this.txtBuscarEstado.Size = new System.Drawing.Size(298, 22);
+            this.txtBuscarEstado.TabIndex = 9;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Poppins Medium", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(986, 110);
+            this.label7.Location = new System.Drawing.Point(986, 64);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 30);
             this.label7.TabIndex = 8;
@@ -227,7 +232,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Poppins Medium", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(723, 49);
+            this.label8.Location = new System.Drawing.Point(722, 34);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(266, 30);
             this.label8.TabIndex = 6;
@@ -246,6 +251,7 @@
             this.dgTareas.RowTemplate.Height = 24;
             this.dgTareas.Size = new System.Drawing.Size(610, 352);
             this.dgTareas.TabIndex = 10;
+            this.dgTareas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTareas_CellClick);
             // 
             // label9
             // 
@@ -256,7 +262,6 @@
             this.label9.Size = new System.Drawing.Size(29, 30);
             this.label9.TabIndex = 2;
             this.label9.Text = "Id";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // txtId
             // 
@@ -265,17 +270,38 @@
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(362, 22);
             this.txtId.TabIndex = 4;
-            this.txtId.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // btBuscarEstado
+            // 
+            this.btBuscarEstado.Location = new System.Drawing.Point(873, 137);
+            this.btBuscarEstado.Name = "btBuscarEstado";
+            this.btBuscarEstado.Size = new System.Drawing.Size(298, 34);
+            this.btBuscarEstado.TabIndex = 11;
+            this.btBuscarEstado.Text = "Buscar por Estado";
+            this.btBuscarEstado.UseVisualStyleBackColor = true;
+            this.btBuscarEstado.Click += new System.EventHandler(this.btBuscarEstado_Click);
+            // 
+            // btTerminarBusqueda
+            // 
+            this.btTerminarBusqueda.Location = new System.Drawing.Point(727, 183);
+            this.btTerminarBusqueda.Name = "btTerminarBusqueda";
+            this.btTerminarBusqueda.Size = new System.Drawing.Size(264, 37);
+            this.btTerminarBusqueda.TabIndex = 12;
+            this.btTerminarBusqueda.Text = "Terminar Busqueda";
+            this.btTerminarBusqueda.UseVisualStyleBackColor = true;
+            this.btTerminarBusqueda.Click += new System.EventHandler(this.btTerminarBusqueda_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1218, 666);
+            this.Controls.Add(this.btTerminarBusqueda);
+            this.Controls.Add(this.btBuscarEstado);
             this.Controls.Add(this.dgTareas);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBuscarEstado);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtBuscarFecha);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dtCreacion);
@@ -290,10 +316,10 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btBorrar);
+            this.Controls.Add(this.btBuscarFecha);
+            this.Controls.Add(this.btEditar);
+            this.Controls.Add(this.btCrear);
             this.Controls.Add(this.lblTitulo);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -306,10 +332,10 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btCrear;
+        private System.Windows.Forms.Button btEditar;
+        private System.Windows.Forms.Button btBorrar;
+        private System.Windows.Forms.Button btBuscarFecha;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -320,14 +346,16 @@
         private System.Windows.Forms.DateTimePicker dtCreacion;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEstado;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtBuscarFecha;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscarEstado;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgTareas;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Button btBuscarEstado;
+        private System.Windows.Forms.Button btTerminarBusqueda;
     }
 }
 

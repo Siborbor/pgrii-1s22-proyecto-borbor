@@ -20,7 +20,6 @@ namespace CrearTarea
     
               public Tarea(string name, string descripcion, string fechaCreacion, string fechaLimite, string estado_inicial)
             {
-                id = Guid.NewGuid().ToString();
                 nombre = name;
                 description = descripcion;
                 fecha_creacion = fechaCreacion;
@@ -28,7 +27,7 @@ namespace CrearTarea
                 estado = estado_inicial;
             }
            
-            [BsonId]
+            [BsonId, BsonElement("_id"), BsonRepresentation(BsonType.ObjectId)]
             public string ID
             {
                 get { return id; }
