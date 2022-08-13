@@ -198,7 +198,6 @@
             // dtBuscarFecha
             // 
             this.dtBuscarFecha.CustomFormat = "dd-MM-yyyy";
-            this.dtBuscarFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtBuscarFecha.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dtBuscarFecha.Location = new System.Drawing.Point(561, 97);
             this.dtBuscarFecha.Name = "dtBuscarFecha";

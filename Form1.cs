@@ -113,6 +113,10 @@ namespace TareaGestor
             collection.DeleteOne(s => s.ID == txtId.Text);
             MostrarDocumento();
             LimpiarDatos();
+            string message = "Tarea Borrada con exito";
+            string title = "aviso";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
         }
 
         private void button4_Click(object sender, EventArgs e)
